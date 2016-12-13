@@ -21,3 +21,6 @@ header{
 footer{
     bottom:0;
 }
+.jq-dstq{
+    transform:rotate(-5deg);
+}

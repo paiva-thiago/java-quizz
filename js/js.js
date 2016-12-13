@@ -1,7 +1,7 @@
 /* O JAVASCRIPT
  * Agora vamos criar uma lista com as melhores pontua... Oi? Faltou alguma coisa, não? A pontuação!
- * Agora a coisa vai ficar mais complexa. Vamos fazer um ranking, mas primeiro vamos só armazenar a maior pontuação.
- * Com isto, não vamos mexer nada neste código. Tem um pontuacoes.js para codificar!
+ * Vamos utilizar as funções do pontuações agora!
+ * Na função acaba, chame a função que atualiza o ponto, e alimente o innerHTML de finalRecordista e o finalRecorde 
  */
 
 var perguntas = geraQuizz();

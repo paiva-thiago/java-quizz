@@ -24,4 +24,22 @@ separadas na memória!), use campos PONTOS - pra maior pontuação e NOME - para
         - um return e um getItem("NOME") bastam :)
 */
 
-
+function pegaPonto(){
+	var p = sessionStorage.getItem("PONTOS");
+	if (p==undefined){
+		p=0;
+		sessionStorage.setItem("PONTOS",p);
+	}
+	return p;	
+}
+function atualizaPonto(nome,novo){
+	var atual = pegaPonto();
+	if (novo>atual){
+		sessionStorage.setItem("PONTOS",novo);
+		sessionStorage.setItem("NOME",nome);
+	}
+	return (novo>atual);
+}
+function pegaRecordista(){
+	return sessionStorage.getItem("NOME");
+}

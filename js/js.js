@@ -1,6 +1,6 @@
 /* O JAVASCRIPT
  * Aqui é nosso palco principal, onde iremos controlar os elementos HTML e aplicar dinâmica e lógica para nossa página.
- * Vamos aplicar lógica, não deixando que o jogador prossiga sem colocar o nome. Pra isso vamos ver variáveis e o uso de if no clicar().
+ * Vamos agora criar uma função para avaliar se nosso jogador respondeu a pergunta corretamente
  */
 
 function apareca(){
@@ -8,42 +8,24 @@ function apareca(){
 }
 
 function clicar(){
-    //para criar uma variável, use o termo var, e logo após o nome da variável
     var nmJogador;
-    //Para atribuir valor, basta chamar a variável e usar o sinal de igual.
-    //Substitua as duas aspas duplas abaixo pelo atributo value contido no elemento de id txtJogador
-    nmJogador = "";
-    /*
-    Assim o nmJogador estará com o que o usuário digitar em txtJogador. 
-    Mas para evitar que o usuário seja esperto e insira apenas espaço, vamos usar o método trim().
-    Ele remove espaços no início e no final de uma string.
-    */
+    nmJogador = document.getElementById("txtJogador").value;
     nmJogador=nmJogador.trim();
-    /* As estruturas condicionais estabelecem blocos que serão executados se a condição estabelecida for verdadeira.
-    Usamos operadores lógicos para comparação.
-    == igual
-    != diferente
-    && e
-    || ou
-    > maior
-    < menor
-    >= maior ou igual
-    <= menor ou igual
-    !  negação (o que é verdadeiro torna-se falso e vice-versa)
-    A estrutura funciona assim.
-    if(condicao){
-        Executo caso seja verdadeiro
-    }
-    Se eu quiser executar algo também se a condição não for verdadeira, uso o else logo após o bloco.
-    if(condicao){
-        Executo caso seja verdadeiro
+    if(nmJogador!=""){
+        document.getElementById("login").style.display="none";        
+        document.getElementById("jogo").style.display="block";        
     }else{
-        Executo caso seja falso
+        alert("Preencha seu Nome!");
     }
+}
+function conferirResposta(){
+    //Cara novo por aqui!
+    //Primeiro precisamos pegar o que o nosso usuário respondeu. Se notar é um input radio, e todos com o mesmo nome.
+    //Basta usarmos a linha abaixo. 
+    var respostaDoUsuario = document.forms.pergunta.alternativa.value;
+    /*Ele deverá realizar uma validação, se nada for preenchido, a variável acima estará em branco!
     
-    Sabendo isso, faça com que esta linha abaixo seja executada apenas se a variável nmJogador tiver algum conteúdo, ou seja,
-    seja diferente de "". Caso contrário, exiba uma caixa de alerta informando o campo que precisa ser validado. Usamos a função
-    alert() para isto, por exemplo: alert("Preencha seu nome!").
-    */
-    document.getElementById("login").style.display="block";
+    SOMENTE SE ESTA VALIDAÇÃO FOR VERDADEIRA, faça os seguintes passos:
+    1) Crie uma variável respostaCorreta, e pegue o atributo value do input hidden que está no HTML
+    2) Compare as duas informações, e informe ao usuário se ele acertou ou errou.*/
 }

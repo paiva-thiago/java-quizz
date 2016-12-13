@@ -1,45 +1,15 @@
 <!DOCTYPE html>
-<!--Neste projeto que eu usei em algumas turmas, adaptei para o pessoal que caça tutoriais que nem eu.
-    Os códigos estarão com alguns comentários explicando o que está rolando em algo novo. 
-    Não vou explicar muito a respeito de tags HTML ou CSS, para poder focar mais no JavaScript
--->
 <html lang="pt-br">
 <head>
   <meta charset="utf-8">
   <title>java-quizz - Seu Jogo de Perguntas e Respostas!</title>
   <meta name="description" content="Jogo de perguntas e respostas">
   <meta name="author" content="Thiago Paiva">
-  <!-- 
-        Algo importante a ser tratado em projetos, principalmente em projetos que vão ganhando tamanhos maiores, é organização.
-    Por isto é importante separar e organizar os arquivos por pastas e categorias. Por exemplo, aqui estou separando:
-        -Frameworks css e eventuais bibliotecas ou plugins que não terão demanda de manutenção na pasta lib,
-        -Códigos JavaScript na pasta JS
-        -Imagens na pasta img
-        -Folhas de estilo na pasta css
-    
-    Vamos utilizar um framework css desenvolvido pelo pessoal do w3schools, o w3css. Para saber mais consulte 
-        http://www.w3schools.com/w3css/default.asp
-  -->
   <link rel="stylesheet" href="lib/w3css/w3.css"/>
   <link rel="stylesheet" href="lib/w3css/w3-theme-grey.css"/>
   <link rel="stylesheet" href="css/css.css"/>
-
-    <!--Um arquivo com código em JavaScript contém a extensão .js. Para utilizarmos o arquivo em nossa página, utilizamos 
-      a tag <script>. Como disse anteriormente, ele ficará na pasta js-->
-  <script src="js/js.js"></script>
+<script src="js/js.js"></script>
 </head>
-<!--Você verá que uma das formas de executarmos código javascript é através de eventos.
-    Associamos eventos a funções, que são executadas no momento relacionado ao evento.
-
-    Por exemplo, temos neste arquivo:
-    1) O onload, que é no momento em que a página carrega (on=ao load=carregar)
-    2) O onsubmit, que é no momento em que o formulário submete informação 
-       (o return false é para evitar que a submissão ocorra e a página recarregue)
-    3) O onclick, que é no momento em que o elemento é clicado.
-
-    No js.js estarão as funcoes apareca() e clicar(), mencionada nestes atributos de eventos.
-
-    Para saber mais a respeito dos eventos possíveis, http://www.w3schools.com/TAgs/ref_eventattributes.asp -->
 <body onload="apareca();">
   <div id="painel" class="w3-container w3-content">
     <header class="w3-blue-grey">
@@ -58,24 +28,26 @@
                    id="btEnviar" 
                    value="Começar!" 
 				   class="w3-btn w3-blue-grey"
-                   onclick="javascript:clicar();"/>
+                   onclick="clicar();"/>
 		</form>		
     </div>
 	
 	<div id="jogo"  class="jq-box w3-card-8 w3-padding" >
-	   <fieldset>
-            <legend>
-                Qual das cores não faz parte da bandeira da Holanda?
-            </legend>
-            <input class="w3-radio" type="radio" name="alternativa" value="1" />
-            <span  class="w3-validate alterna" id="alt1">Vermelho</span><br/>
-            <input class="w3-radio" type="radio" name="alternativa" value="2" />
-            <span  class="w3-validate alterna" id="alt2">Azul</span><br/>
-            <input class="w3-radio" type="radio" name="alternativa" value="3" />
-            <span  class="w3-validate alterna" id="alt3">Verde</span><br/>
-            <input type="hidden" id="correta" value="3"/>
-            <input class="w3-btn w3-blue-grey" type="button" value="Responda!" id="responder" onclick="javascript:responder();"/>
-        </fieldset>
+	   <form name="pergunta" onsubmit="return false;">
+            <fieldset>
+                <legend>
+                    Qual das cores não faz parte da bandeira da Holanda?
+                </legend>
+                <input class="w3-radio" type="radio" name="alternativa" value="1" />
+                <span  class="w3-validate alterna" id="alt1">Vermelho</span><br/>
+                <input class="w3-radio" type="radio" name="alternativa" value="2" />
+                <span  class="w3-validate alterna" id="alt2">Azul</span><br/>
+                <input class="w3-radio" type="radio" name="alternativa" value="3" />
+                <span  class="w3-validate alterna" id="alt3">Verde</span><br/>
+                <input type="hidden" id="correta" value="3"/>
+                <input class="w3-btn w3-blue-grey" type="button" value="Responda!" id="responder" onclick="conferirResposta();"/>
+            </fieldset>
+        </form>
 	</div>
   </div>
   <footer class="w3-container w3-blue-grey">

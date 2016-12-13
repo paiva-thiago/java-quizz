@@ -1,23 +1,25 @@
 /* O JAVASCRIPT
  * Aqui é nosso palco principal, onde iremos controlar os elementos HTML e aplicar dinâmica e lógica para nossa página.
- * Agora vamos ver o que é um índice de um vetor! Mas primeiro, chame o atualiza() logo abaixo da linha 37 - para iniciar -  
- e abaixo da estrutura condicional que confere se a resposta está correta - para avançar.
+ * Se você testou o jogo, notou que ele não fez absolutamente nada no final do jogo. 
+ * Nos browsers mais recentes, temos um recurso através do F12 - é a área do desenvolvedor, podemos depurar nosso código, e acompanhar  
+ se algum recurso simplesmente não foi carregado, ou ainda - se houve erro no javascript. Se você testar com este recurso aberto, vai
+ ver que algo aparece no console como erro, provavelmente uma mensagem parecida com esta:
+                                        TypeError: pergunta is undefined
+ * Ele tentou acessar uma posição inexistente no vetor, e retornou undefined, é um tipo primitivo do javascript que indica que NENHUM 
+ valor foi atribuido e se ele não tem valor algum... Ele nem objeto é! Isto aconteceu por tentar acessar um valor além da quantidade de
+ vetores.
+ 
+ Então, lá na função responder, onde é acrescentado 1 ao idx ,vamos verificar se idx é maior que a dimensão do vetor. Acessamos este valor
+ através do atributo length. (exemplo: perguntas.length). Se esta comparação for verdadeira, idx deverá voltar a 0. Depois trataremos o 
+ final do jogo.
  */
 
 var perguntas = geraQuizz();
+var nmJogador;
+var idx       = 0;
 
-function atualiza(){
-    var pergunta = perguntas[0];
-    /*Então, se você testou, viu que depois da resposta ele não sai do lugar, mesmo chamando esta função!
-      O que acontece é o seguinte - esse zero SEMPRE vai posicionar ao primeiro item! Ele faz o papel de índice!
-      O índice é uma informação que INDICA qual a posição do meu vetor que quero acessar. No javascript ele SEMPRE começa com o número 0.
-      Ou seja, precisamos que 
-        1) Esse índice varie, adicionando 1 após cada pergunta respondida.
-        2) Que o atualiza() tenha um argumento, e ao chamar este argumento seja utilizado. Ele fará o papel do índice e deverá substituir
-        o 0.
-        3) Este argumento seja usado na chamada da função. Para isto será necessária uma variável global para ser o índice.
-    */
-      
+function atualiza(i){
+    var pergunta = perguntas[i]
     document.getElementById("pergunta").innerHTML   =   pergunta.perg;
     document.getElementById("alt1").innerHTML       =   pergunta.primeira;
     document.getElementById("alt2").innerHTML       =   pergunta.segunda;
@@ -29,12 +31,12 @@ function apareca(){
 }
 
 function clicar(){
-    var nmJogador;
     nmJogador = document.getElementById("txtJogador").value;
     nmJogador=nmJogador.trim();
     if(nmJogador!=""){
         document.getElementById("login").style.display="none";        
         document.getElementById("jogo").style.display="block";        
+        atualiza(idx);
     }else{
         alert("Preencha seu Nome!");
     }
@@ -48,6 +50,8 @@ function conferirResposta(){
         }else{
             alert("Resposta INCORRETA!")
         }
+        idx=idx+1;
+        atualiza(idx);
     }else{
         alert("Selecione uma alternativa!");
     }

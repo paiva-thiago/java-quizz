@@ -1,29 +1,18 @@
 /*
-                                        ********* SESSÕES ***************
-Temos um recurso muito interessante no JavaScript onde podemos armazenar informações para utilizar em outros momentos. Damos o nome de
-sessões. Este recurso se chama webStorage. E pode ser feito de duas formas:
-
-localStorage   - as informações são armazenadas de forma temporária - se fecho a aba do navegador, os dados se perdem
-sessionStorage - as informações permanecem armazenadas, mesmo após o fechamento de uma aba.
-
-Ambos possuem métodos com o mesmo nome. Para trabalharmos com uma informação, sempre daremos um nome chave - como um nome de uma variável.
-temos o getItem(nomeDaChave) que retorna o valor armazenado, setItem(nomeDaChave,valor) que cria/atualiza o valor e o clear(), que limpa 
-tudo.
-
-Vamos então armazenar a pontuação do nosso jogador, caso ele quebre o recorde ;) 
-
-Usando os métodos do  sessionStorage ou localStorage (lembre que não dá pra usar de formas alternadas, estas informações ficam em áreas
-separadas na memória!), use campos PONTOS - pra maior pontuação e NOME - para o nome do recordista -  crie três funções:
-
-    - Um para atualizar a pontuação 
-        - Ele deverá ter dois argumentos: o nome do jogador que está jogando e sua respectiva pontuação.
-        - Dentro dele, ele deverá resgatar a maior pontuação salva, e atualizar - pontuação e nome do jogador caso a condição permita
-    - Um para obter a pontuação armazenada
-        - Lembre que se jogar pela primeira vez, ele estará como undefined. Trate isto usando o setItem e o valor 0.
-    - Um para obter o nome do recordista.
-        - um return e um getItem("NOME") bastam :)
-*/
-
+                                SESSÕES E RANKING
+    Voltando pra cá, seria interessante ter uma lista de maiores pontuações, não? :)
+    Podemos armazenar um vetor de objeto (que contém nome e pontos), fazer uma ordenação, mas... O recurso webStorage somente armazena
+    informações alfanuméricas! Como podemos fazer?
+    
+    Lembra que criamos objetos com JSON? O JS nos fornece JSON.stringify, que converte um elemento em string, e o JSON.parse 
+    que faz o inverso!
+    
+    Então fica o desafio. Crie uma variável global que seja um vetor de objetos jogador.
+    Com isto, crie uma função que receba como argumento o nome do jogador e sua pontuação, crie o objeto com estas propriedades e insira 
+    no vetor. Mas não só isto. Que este vetor esteja ordenado!
+    
+    Mas armazene isto em um espaço no sessionStorage, usando os recursos JSON mencionados agora.
+ */
 function pegaPonto(){
 	var p = sessionStorage.getItem("PONTOS");
 	if (p==undefined){

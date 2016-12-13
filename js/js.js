@@ -17,10 +17,13 @@ function atualiza(i){
     document.getElementById("correta").value        =   pergunta.certa;
 }
 function acaba(){
-    document.getElementById("jogo").style.display     = "none";        
-    document.getElementById("acabou").style.display   = "block";        
-    document.getElementById("finalJogador").innerHTML = nmJogador;    
-    document.getElementById("finalPontos").innerHTML  = pontos;    
+    atualizaPonto(nmJogador,pontos);
+    document.getElementById("jogo").style.display            = "none";        
+    document.getElementById("acabou").style.display          = "block";        
+    document.getElementById("finalJogador").innerHTML        = nmJogador;    
+    document.getElementById("finalPontos").innerHTML         = pontos;    
+    document.getElementById("finalRecorde").innerHTML        = pegaPonto();    
+    document.getElementById("finalRecordista").innerHTML     = pegaRecordista();    
 }
 function apareca(){
     document.getElementById("login").style.display="block";

@@ -8,10 +8,7 @@
   <link rel="stylesheet" href="lib/w3css/w3.css"/>
   <link rel="stylesheet" href="lib/w3css/w3-theme-grey.css"/>
   <link rel="stylesheet" href="css/css.css"/>
-  <!--
-        Vamos utilizar o questionador js no js.js. Então precisamos de uma tag <script> referenciando ao novo arquivo ANTES do js.js. 
-                                    Coloque logo acima da tag <script> abaixo! 
-  -->
+  <script src="js/questionador.js"></script>
   <script src="js/js.js"></script>
 </head>
 <body onload="apareca();">
@@ -39,16 +36,16 @@
 	<div id="jogo"  class="jq-box w3-card-8 w3-padding" >
 	   <form name="pergunta" onsubmit="return false;">
             <fieldset>
-                <legend>
-                    Qual das cores não faz parte da bandeira da Holanda?
+                <legend id="pergunta">
+                    <!--Veja que a pergunta e as informações das alternativas sumiram e o legend tem id! Vamos tratar disso no js.-->
                 </legend>
                 <input class="w3-radio" type="radio" name="alternativa" value="1" />
-                <span  class="w3-validate alterna" id="alt1">Vermelho</span><br/>
+                <span  class="w3-validate alterna" id="alt1"></span><br/>
                 <input class="w3-radio" type="radio" name="alternativa" value="2" />
-                <span  class="w3-validate alterna" id="alt2">Azul</span><br/>
+                <span  class="w3-validate alterna" id="alt2"></span><br/>
                 <input class="w3-radio" type="radio" name="alternativa" value="3" />
-                <span  class="w3-validate alterna" id="alt3">Verde</span><br/>
-                <input type="hidden" id="correta" value="3"/>
+                <span  class="w3-validate alterna" id="alt3"></span><br/>
+                <input type="hidden" id="correta" value="0"/>
                 <input class="w3-btn w3-blue-grey" type="button" value="Responda!" id="responder" onclick="conferirResposta();"/>
             </fieldset>
         </form>

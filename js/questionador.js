@@ -1,8 +1,5 @@
-/*Agora vamos usar mais um arquivo, este para separar as funções responsáveis pela construção das perguntas!
-    Vamos usar vetores e objetos para isto.
-    Objeto armazenará as características das perguntas, e o vetor armazenará um grupo dos objetos. Varreremos este vetor durante o jogo!
-    */
-    function addPergunta(nmPergunta,nmPrimeira,nmSegunda,nmTerceira,idCerta){
+//Função que criará uma pergunta a partir do conceito de objetos no javascript - JSON está aí! 
+function addPergunta(nmPergunta,nmPrimeira,nmSegunda,nmTerceira,idCerta){
 		var questao = {
 				perg		:	nmPergunta,
 				primeira 	:	nmPrimeira,
@@ -12,23 +9,23 @@
 		};
 		return questao;
 	}
-/****VETORES*********
-
-São grupos de elementos do mesmo tipo, em resumo esta é sua definição.
-
-Podemos criar com um simples 
-var vetor = [];
-Este é um vetor vazio. Temos métodos que permitem adicionar elementos.
-unshift(item) adiciona na posição inicial do meu vetor
-push(item) adiciona na posição final do meu vetor.
-Ambos retornam a nova quantidade de itens.
-
-Podemos também remover itens com métodos
-pop() elimina o último item
-shift() elimina o primeiro
-
-Ambos retornam quem foi eliminado.
-
-Crie uma função que crie um vetor, adicione neste vetor várias perguntas criadas com a função acima. Use a criatividade para as perguntas.
-Esta nova função deverá ter como retorno o próprio vetor.
-*/
+//Aqui adicionamos as perguntas a um vetor!
+	function geraQuizz(){
+		var perguntas=[];
+		perguntas.push(addPergunta("Qual das cores não faz parte da bandeira da Holanda?",
+								"Vermelho",
+								"Azul",
+								"Verde",
+								3));
+		perguntas.unshift(addPergunta("Qual a capital do Brasil?",
+								"Rio de Janeiro",
+								"Buenos Aires",
+								"Brasilia",
+								3));	
+		perguntas.push(addPergunta("Qual time venceu na casa do adversário, em uma semifinal de copa do mundo, pelo placar de 7 a 1?",
+								"Itália",
+								"Alemanha",
+								"Equador",
+								2));						
+		return perguntas;
+	}

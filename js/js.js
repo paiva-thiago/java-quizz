@@ -1,8 +1,10 @@
 /* O JAVASCRIPT
  * Aqui é nosso palco principal, onde iremos controlar os elementos HTML e aplicar dinâmica e lógica para nossa página.
- * Neste passo não teremos nada por aqui. Vamos para um cara novo, que está na mesma pasta deste arquivo. É o questionador.js.
+ * Agora vamos chamar um método do questionador.js.
  */
 
+// Aqui crie uma variável que fará o papel do vetor. Esta variável receberá o valor da função do questionador.js que retorna o vetor das 
+// perguntas.
 function apareca(){
     document.getElementById("login").style.display="block";
 }

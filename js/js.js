@@ -1,11 +1,6 @@
 /* O JAVASCRIPT
- * Vamos agora dar um fim a este jogo!
- * Vamos encerrar este loop de perguntas. Assim como fizemos na função clicar() vamos fazer aqui, mas ocultando a div id jogo  e exibindo
-   a div id acabou (sim, veja no html, tem elemento novo por lá!). Vamos colocar isto em uma função.
-   
-   Nesta função você também alterará o innerHTML do span com id finalJogador! Não estranhe a pontuação zerada, vamos fazer isso no próximo passo!
-   
-   Com a função feita, troque a linha que zera o idx pela chamada da função.
+ * Agora vamos criar uma lista com as melhores pontua... Oi? Faltou alguma coisa, não? A pontuação!
+ * Esta tarefa é uma das mais simples. Crie uma variável global, incremente 10 a cada acerto, e exiba dentro da tag finalPontos
  */
 
 var perguntas = geraQuizz();
@@ -19,6 +14,11 @@ function atualiza(i){
     document.getElementById("alt2").innerHTML       =   pergunta.segunda;
     document.getElementById("alt3").innerHTML       =   pergunta.terceira;
     document.getElementById("correta").value        =   pergunta.certa;
+}
+function acaba(){
+    document.getElementById("jogo").style.display="none";        
+    document.getElementById("acabou").style.display="block";        
+    document.getElementById("finalJogador").innerHTML = nmJogador;    
 }
 function apareca(){
     document.getElementById("login").style.display="block";
@@ -46,8 +46,8 @@ function conferirResposta(){
         }
         idx=idx+1;
         if(idx>=perguntas.length){
-            idx=0;    
-        }        
+            acaba();
+        }//Veja que o atualiza continua a ser chamado e causar erro. Vamos criar um else e colocar esta linha abaoxp demtro dele.        
         atualiza(idx);
     }else{
         alert("Selecione uma alternativa!");

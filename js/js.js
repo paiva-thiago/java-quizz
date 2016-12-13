@@ -1,27 +1,28 @@
 /* O JAVASCRIPT
  * Aqui é nosso palco principal, onde iremos controlar os elementos HTML e aplicar dinâmica e lógica para nossa página.
- * Agora vamos ver mais recursos do DOM - o innerHTML - e vamos entender sobre variáveis locais e globais
+ * Agora vamos ver o que é um índice de um vetor! Mas primeiro, chame o atualiza() logo abaixo da linha 37 - para iniciar -  
+ e abaixo da estrutura condicional que confere se a resposta está correta - para avançar.
  */
 
 var perguntas = geraQuizz();
-/*
-      Sabe esse cara acima? Ele é um cara global. Não, isto não é sobre televisão. E sim sobre o alcance dele. 
-      A diferença entre variáveis locais e globais é exatamente sobre o alcance. 
-      Este *perguntas* pode ser acessado de qualquer função do meu código, já que criei fora de qualquer função.
-      Agora... se eu tentar, por exemplo, acessar o nmJogador que está em clicar() no apareca(), vou ter problemas. Isto por um simples
-    motivo: Ele foi declarado DENTRO do clicar() e estará acessível somente dentro dele.
-    
-      1) vamos precisar do seguinte. o nmJogador vai ser utilizado em outras funções. Então a declaração que está logo abaixo da 
-      função clicar(), precisa estar no mesmo nível que a variável perguntas. Coloque logo abaixo dela! :)
-      
-      2) Crie uma função, logo após este comentário, que altere o conteúdo de alguns elementos no html.
-         Vamos alterar a pergunta, cada alternativa e o value do input da resposta correta. Exceto este input, todos alterarão o atributo
-         innerHTML. Ele altera o conteúdo que está entre as tags de um elemento do HTML. 
-         Eles serão alimentados pela primeira posição do perguntas. A função já está pronta para você completar!
-*/
+
 function atualiza(){
     var pergunta = perguntas[0];
-    //Complete aqui!
+    /*Então, se você testou, viu que depois da resposta ele não sai do lugar, mesmo chamando esta função!
+      O que acontece é o seguinte - esse zero SEMPRE vai posicionar ao primeiro item! Ele faz o papel de índice!
+      O índice é uma informação que INDICA qual a posição do meu vetor que quero acessar. No javascript ele SEMPRE começa com o número 0.
+      Ou seja, precisamos que 
+        1) Esse índice varie, adicionando 1 após cada pergunta respondida.
+        2) Que o atualiza() tenha um argumento, e ao chamar este argumento seja utilizado. Ele fará o papel do índice e deverá substituir
+        o 0.
+        3) Este argumento seja usado na chamada da função. Para isto será necessária uma variável global para ser o índice.
+    */
+      
+    document.getElementById("pergunta").innerHTML   =   pergunta.perg;
+    document.getElementById("alt1").innerHTML       =   pergunta.primeira;
+    document.getElementById("alt2").innerHTML       =   pergunta.segunda;
+    document.getElementById("alt3").innerHTML       =   pergunta.terceira;
+    document.getElementById("correta").value        =   pergunta.certa;
 }
 function apareca(){
     document.getElementById("login").style.display="block";

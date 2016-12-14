@@ -54,8 +54,22 @@
         <h1 class="w3-animate-fading w3-teal">Fim de jogo, <span id="finalJogador"></span>!</h1>
         <span id="finalPontos" class="w3-badge w3-xxxlarge w3-padding w3-blue-grey">42</span>
         <h2 class="jq-dstq w3-tag w3-xlarge w3-padding w3-teal">Recordista:<br> <span id="finalRecordista"></span><br><span id="finalRecorde"></span></h2>
-        <!--Cara novo por aqui!-->
+        <button onclick="exibeRank();" class="w3-btn w3-blue-grey">Melhores Pontuações</button>
+        <button class="w3-btn w3-red" onclick="location.reload();">Reiniciar</button>
     </div>  
+  </div>
+  <div id="rank" class="jq-box w3-card-8 w3-padding w3-center">
+      <table class="w3-table">
+        <thead>
+            <tr>
+                <th>Nome</th><th>Pontos</th>
+            </tr>  
+        </thead>    
+        <tbody id="pontuacoes">
+          
+        </tbody>  
+      </table>    
+      <button class="w3-btn w3-red" onclick="location.reload();">Reiniciar</button>
   </div>
   <footer class="w3-container w3-blue-grey">
      <p class="w3-large w3-center">Feito por Thiago Paiva</p>

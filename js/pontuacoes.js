@@ -1,18 +1,44 @@
-/*
-                                SESSÕES E RANKING
-    Voltando pra cá, seria interessante ter uma lista de maiores pontuações, não? :)
-    Podemos armazenar um vetor de objeto (que contém nome e pontos), fazer uma ordenação, mas... O recurso webStorage somente armazena
-    informações alfanuméricas! Como podemos fazer?
-    
-    Lembra que criamos objetos com JSON? O JS nos fornece JSON.stringify, que converte um elemento em string, e o JSON.parse 
-    que faz o inverso!
-    
-    Então fica o desafio. Crie uma variável global que seja um vetor de objetos jogador.
-    Com isto, crie uma função que receba como argumento o nome do jogador e sua pontuação, crie o objeto com estas propriedades e insira 
-    no vetor. Mas não só isto. Que este vetor esteja ordenado!
-    
-    Mas armazene isto em um espaço no sessionStorage, usando os recursos JSON mencionados agora.
- */
+function pegaRanking(){
+    var db = sessionStorage.getItem("RANKING");	
+    if((db==undefined)||(db==null)){
+		sessionStorage.setItem("RANKING","");
+	}
+    return db;	
+}
+function setRanking(nmJogador,qtPontos){
+    var obj = {
+				nome:nmJogador,
+				pontos:qtPontos
+			  }
+    var lst = sessionStorage.getItem("RANKING");
+	if(lst.trim()==""){
+		lst=[];
+	}else{
+		lst = JSON.parse(lst);
+	}
+    lst.push(obj);
+    ranking = ordenaRanking(lst);
+	lst= JSON.stringify(ranking);
+    console.log(lst);
+	sessionStorage.setItem("RANKING",lst);
+}
+function ordenaRanking(arrPontos){
+    for(var x=0;x<arrPontos.length;x++){
+        for(var y=0;y<arrPontos.length;y++){
+            if(x!=y){
+                var um = arrPontos[x];
+                var outro = arrPontos[y];
+                if(um.pontos>outro.pontos){
+                    var aux=arrPontos[y];
+                    arrPontos[y]=arrPontos[x];
+                    arrPontos[x]=aux;
+                }
+            }
+        }
+    }
+    return arrPontos;
+}
+var ranking = pegaRanking();
 function pegaPonto(){
 	var p = sessionStorage.getItem("PONTOS");
 	if (p==undefined){
@@ -22,6 +48,7 @@ function pegaPonto(){
 	return p;	
 }
 function atualizaPonto(nome,novo){
+    setRanking(nome,novo);
 	var atual = pegaPonto();
 	if (novo>atual){
 		sessionStorage.setItem("PONTOS",novo);

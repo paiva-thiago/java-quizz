@@ -1,9 +1,7 @@
-/* O JAVASCRIPT
- * Agora vamos criar uma lista com as melhores pontua... Oi? Faltou alguma coisa, não? A pontuação!
- * Vamos utilizar as funções do pontuações agora!
- * Na função acaba, chame a função que atualiza o ponto, e alimente o innerHTML de finalRecordista e o finalRecorde 
- */
-
+/*
+    java-quizz
+    @author : Thiago Paiva
+*/
 var perguntas = geraQuizz();
 var nmJogador;
 var idx       = 0;
@@ -16,6 +14,16 @@ function atualiza(i){
     document.getElementById("alt3").innerHTML       =   pergunta.terceira;
     document.getElementById("correta").value        =   pergunta.certa;
 }
+function tblRank(){
+    var retorno="";
+    if (ranking instanceof Array){
+        for(var c=0;c<ranking.length;c++){
+            var j = ranking[c];
+            retorno+="<tr><td>"+j.nome+"</td><td>"+j.pontos+"</td></tr>"
+        }        
+    }
+    return retorno;
+}
 function acaba(){
     atualizaPonto(nmJogador,pontos);
     document.getElementById("jogo").style.display            = "none";        
@@ -24,11 +32,16 @@ function acaba(){
     document.getElementById("finalPontos").innerHTML         = pontos;    
     document.getElementById("finalRecorde").innerHTML        = pegaPonto();    
     document.getElementById("finalRecordista").innerHTML     = pegaRecordista();    
+    document.getElementById("pontuacoes").innerHTML          = tblRank();
 }
 function apareca(){
     document.getElementById("login").style.display="block";
 }
+function exibeRank(){
+    document.getElementById("acabou").style.display="none";        
+    document.getElementById("rank").style.display="block";        
 
+}
 function clicar(){
     nmJogador = document.getElementById("txtJogador").value;
     nmJogador=nmJogador.trim();

@@ -21,7 +21,7 @@ Há uma outra versão utilizando JQuery, onde planejo publicar em breve.
 
 Se quiser focar no javascript e aproveitar o ~~horroroso~~ belíssimo CSS e as estruturas do HTML, basta acompanhar pelo repositório. Para usar pelo git, obviamente precisará dele instalado na sua máquina, e na linha de comando, digitar o seguinte:
 
-`git clone https://github.com/paiva-thiago/java-quizz.git`
+`git clone https://github.com/paiva-thiago/js-quizz.git`
 
 E o repositório está separado por cada commit representando um tópico, então, para ir no passo a passo, acompanhando cada tópico, tem o índice dos checkouts, para voltar a cada 'capítulo' :smile:
 
